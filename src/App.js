@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+// Components
+import Title from "./components/Title/Title"
+import Subtitle from "./components/Subtitle/Subtitle"
+import Section from "./components/Section/Section"
+import InlineTypistLoop from "./components/InlineTypistLoop/InlineTypistLoop"
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Section fullHeight="true">
+          <Title>Hi!</Title>
+          <Subtitle>
+            I'm Nik, a&nbsp;
+            <InlineTypistLoop 
+              color="#ff4714" 
+              wordList={["software developer", "web developer"]} />
+            <br />
+            from Germany.
+          </Subtitle>
+        </Section>
+        <Section>Normal size</Section>
+        <Section>Normal size again</Section>
       </div>
     );
   }
