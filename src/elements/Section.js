@@ -1,6 +1,11 @@
+import React, { Component } from "react";
 import styled from "styled-components";
 
-export default styled.div`
+const Section = React.forwardRef ((props, ref) => (
+    <div className={props.className} ref={ref}>{props.children}</div>
+));
+
+export default styled(Section)`
     display: flex;
     flex-direction: column;
     justify-content: center;

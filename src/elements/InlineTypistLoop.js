@@ -1,6 +1,7 @@
 import Typist from "react-typist";
 import React, { Component } from "react";
 import styled from "styled-components";
+import _ from "lodash";
 
 class InlineTypistLoop extends Component {
     constructor (props) {
@@ -29,7 +30,7 @@ class InlineTypistLoop extends Component {
             ? ""
             : (
                 <Typist className={this.props.className} onTypingDone={restartTyping}>
-                    {wordList.map (item => (
+                    {_.shuffle(wordList).map (item => (
                         <span key={item}>
                             {item}
                             <Typist.Backspace count={item.length} delay={wordDelay} />
