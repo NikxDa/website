@@ -4,8 +4,6 @@ import Skill from "./blocks/Skill";
 
 // Components
 import Title from "./elements/Title"
-import BackgroundImage from "./elements/BackgroundImage"
-import Layer from "./elements/Layer"
 import Description from "./elements/Description"
 import Section from "./elements/Section"
 import InlineTypistLoop from "./elements/InlineTypistLoop"
@@ -16,44 +14,11 @@ import Project from './blocks/Project';
 class App extends Component {
     constructor (props) {
         super (props);
-
-        this.state = {
-            sectionRefs: [
-                React.createRef (),
-                React.createRef (),
-                React.createRef (),
-                React.createRef ()
-            ],
-            sectionOffsets: [
-                0,
-                0,
-                0,
-                0
-            ]
-        }
-
-    }
-
-    componentDidMount () {
-        window.setInterval (this.calculateSectionOffsets.bind (this), 2000);
-        this.calculateSectionOffsets ();
-    }
-
-    calculateSectionOffsets () {
-        let didChange = false;
-        const newSectionOffsets = this.state.sectionRefs.map ((itm, idx) => {
-            const newOffset = itm.current ? itm.current.getBoundingClientRect ().top + window.scrollY : 0;
-            if (newOffset != this.state.sectionOffsets [idx]) didChange = true;
-            return newOffset;
-        });
-
-        if (!didChange) return;
-        this.setState ({ sectionOffsets: newSectionOffsets });
     }
 
     render() {
         return (
-            <div>
+            <div style={{ overflowY: "hidden" }}>
                 {/* Hero Header Section */}
                 <Section backgroundImage="/background-1.svg" fullHeight="true">
                     <Title>Hi!</Title>
@@ -89,8 +54,9 @@ class App extends Component {
                             image="/project-1.svg" imageWidth={30}
                             imageTranslateY="-10rem"
                             imageTranslateRotate="-12deg"
-                            status=""
                             imageOrientation="r"
+                            status="Active Development"
+                            releaseDate="2019"
                         />
                     </Margin>
 
@@ -103,16 +69,15 @@ class App extends Component {
                             imageTranslateX="-5rem"
                             imageTranslateY="-15rem"
                             imageTranslateRotate="8deg"
-                            status=""
+                            status="Draft & Prototype"
+                            releaseDate="∞"
                         />
                     </Margin>
                 </Section>
 
                 {/* Social Section */}
                 <Section backgroundImage="/background-3.svg" backgroundSize="30%">
-                    <br /><br /><br /><br /><br />
                     <Title>Skills enabled.</Title>
-                    <br />
                     <Margin left="15rem">
                         <Description>
                         I became interested in technology at the age&nbsp;of&nbsp;5,
