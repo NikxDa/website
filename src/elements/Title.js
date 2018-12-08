@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { darkGray } from "../utils/themeColors";
 
 export default styled.h1`
     &, & * {
-        color: #27282B;
+        color: ${darkGray};
         font-family: "Montserrat", serif;
         font-size: 2.5rem;
         font-weight: 700;

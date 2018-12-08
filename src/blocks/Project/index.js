@@ -3,6 +3,7 @@ import React from "react";
 import Flex from "../../elements/Flex";
 import Transform from "../../elements/Transform";
 import Margin from "../../elements/Margin";
+import Reveal from "../../elements/Reveal";
 
 import ProjectImage from "./ProjectImage";
 import ProjectTitle from "./ProjectTitle";
@@ -41,7 +42,7 @@ export default ({
                 </Flex>
             </Margin>
         </div>
-        
+
         { imageOrientation === "r" && 
             <Transform translateX={imageTranslateX} translateY={imageTranslateY} rotate={imageTranslateRotate}>
                 <ProjectImage imageWidth={imageWidth} src={image} />
