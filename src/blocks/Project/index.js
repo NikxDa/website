@@ -2,6 +2,7 @@ import React from "react";
 
 import Flex from "../../elements/Flex";
 import Transform from "../../elements/Transform";
+import Margin from "../../elements/Margin";
 
 import ProjectImage from "./ProjectImage";
 import ProjectTitle from "./ProjectTitle";
@@ -28,12 +29,19 @@ export default ({
                 <ProjectImage imageWidth={imageWidth} src={image} />
             </Transform>
         }
+
         <div style={{width: "40%"}}>
             <ProjectType>{type}</ProjectType>
             <ProjectTitle>{title}</ProjectTitle>
             <ProjectDescription>{description}</ProjectDescription>
-            <ProjectStatus status={status} releaseDate={releaseDate} />
+            <Margin top="1rem">
+                <Flex justifyContent="space-between">
+                    <ProjectStatus title="Status" value={status} />
+                    <ProjectStatus title="Release" value={releaseDate} />
+                </Flex>
+            </Margin>
         </div>
+        
         { imageOrientation === "r" && 
             <Transform translateX={imageTranslateX} translateY={imageTranslateY} rotate={imageTranslateRotate}>
                 <ProjectImage imageWidth={imageWidth} src={image} />
