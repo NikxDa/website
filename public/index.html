@@ -20,12 +20,76 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+
+    <!-- Spinner CSS -->
+    <style>
+      @keyframes loading-spinner {
+        0% { transform: perspective(120px) rotateX(0deg) rotateY(0deg); }
+        25% { transform: perspective(120px) rotateX(180deg); }
+        50% { transform: perspective(120px) rotateX(180deg) rotateY(180deg); }
+        75% { transform: perspective(120px) rotateX(360deg) rotateY(180deg); }
+        100% { transform: perspective(120px) rotateX(360deg) rotateY(360deg); }
+      }
+
+      .loading-spinner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transition: 2s opacity;
+      }
+      
+      .loading-spinner svg {
+        font-weight: 900;
+        color: #E0E5F0;
+        font-size: 3rem;
+        font-family: "Arial Black", sans-serif;
+
+        animation: loading-spinner 4s linear infinite;
+        transform-origin: 50% 50%;
+        width: 5vw;
+      }
+
+      .loading-spinner-text {
+        margin-top: 2rem;
+        color: #959EB2;
+        font-family: "Arial", sans-serif;
+        font-size: .8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+      }
+    </style>
   </head>
   <body>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
+
+    <!-- React entry hook -->
     <div id="root"></div>
+
+    <!-- Spinner while React is rendering & loading assets -->
+    <div class="loading-spinner">
+      <svg viewBox="0 0 355 159" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+        <defs></defs>
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Square" transform="translate(-669.000000, -1706.000000)" fill="#DADFEA">
+                <path d="M772.397716,1706.78973 C789.485801,1706.78973 803.165665,1712.16568 813.437716,1722.91773 C823.709767,1733.66979 828.845716,1748.16564 828.845716,1766.40573 L828.845716,1864.61373 L777.869716,1864.61373 L777.869716,1781.09373 C777.869716,1772.26169 775.46974,1765.30176 770.669716,1760.21373 C765.869692,1755.12571 759.437756,1752.58173 751.373716,1752.58173 C742.925674,1752.77373 735.965743,1755.55771 730.493716,1760.93373 C725.021689,1766.30976 721.805721,1773.41369 720.845716,1782.24573 L720.845716,1864.61373 L669.581716,1864.61373 L669.581716,1708.80573 L720.845716,1708.80573 L720.845716,1734.14973 C726.413744,1725.12569 733.565672,1718.30976 742.301716,1713.70173 C751.03776,1709.09371 761.069659,1706.78973 772.397716,1706.78973 Z M853.504,1708.80573 L912.256,1708.80573 L937.312,1752.58173 L964.384,1708.80573 L1020.544,1708.80573 L971.296,1784.83773 L1024,1864.61373 L964.96,1864.61373 L937.312,1817.09373 L906.496,1864.61373 L850.048,1864.61373 L903.04,1784.83773 L853.504,1708.80573 Z" id="nx"></path>
+            </g>
+        </g>
+      </svg>
+      <span class="loading-spinner-text">
+        Loading
+      </span>
+    </div>
+
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
