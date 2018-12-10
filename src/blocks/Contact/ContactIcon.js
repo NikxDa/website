@@ -9,4 +9,5 @@ export default styled.div`
     padding: 2rem;
     border-radius: 5rem;
     margin-right: 2rem;
+    transition: .6s transform;
 `;
