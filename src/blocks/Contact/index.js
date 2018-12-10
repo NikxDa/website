@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { darkOrange } from "../../utils/themeColors";
 
 import Flex from "../../elements/Flex";
 
@@ -29,8 +30,12 @@ const Contact = ({
 export default styled(Contact)`
     display: block;
     text-decoration: none;
-    
-    & + & {
-        margin-top: 2rem;
+
+    &:hover ${ContactIcon} { 
+        transform: scale(1.1);
+    }
+
+    &:hover ${ContactMethod} {
+        color: ${darkOrange};
     }
 `;
