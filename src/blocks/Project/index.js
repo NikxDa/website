@@ -6,6 +6,7 @@ import ProjectTitle from "./ProjectTitle";
 import ProjectDescription from "./ProjectDescription";
 import ProjectType from "./ProjectType";
 import ProjectStatus from "./ProjectStatus";
+import ProjectImage from "./ProjectImage";
 
 export default ({
     title,
@@ -27,3 +28,5 @@ export default ({
         </Margin>
     </div>
 );
+
+export { ProjectImage };

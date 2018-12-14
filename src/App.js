@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { darkOrange } from "./utils/themeColors";
-import { TabletPortraitDown, TabletLandscapeUp } from "./elements/Breakpoint";
+import { TabletPortraitUp, PhoneOnly, TabletPortraitDown, TabletLandscapeUp } from "./elements/Breakpoint";
 
 // Import font loader
 import FontFaceObserver from "./utils/fontFaceObserver.js";
+
+import breakpointProps from "./utils/breakpointProps";
 
 // Components
 import Skill from "./blocks/Skill";
@@ -12,12 +14,12 @@ import Description from "./elements/Description"
 import Section from "./elements/Section"
 import InlineTypistLoop from "./elements/InlineTypistLoop"
 import Margin from "./elements/Margin"
-import Transform from "./elements/Transform"
-import Spinner from "./elements/Spinner"
-import Project from './blocks/Project';
+import Project, { ProjectImage } from './blocks/Project';
 import Contact from './blocks/Contact';
 import Grid from "./elements/Grid";
+import Note from "./elements/Note";
 import Flex from "./elements/Flex";
+import Box from "./elements/Box";
 import Reveal from "./elements/Reveal";
 
 class App extends Component {
@@ -64,6 +66,10 @@ class App extends Component {
                 img.src = itm;
             });
         });
+
+        window.setTimeout (() => {
+            this.removeSpinner ();
+        }, 15000);
 
         // Wait for all assets to load
         Promise.all ([
@@ -123,33 +129,93 @@ class App extends Component {
                 {/* Showcase Section */}
                 <Section backgroundImage="/background-2.svg">
                     <Title>I do stuff.</Title>
-                    <Margin left="5rem" leftPhone="3rem">
-                        <Description>
-                            A lot of my free-time is spent on&nbsp;software
-                            projects and&nbsp;learning new skills. Here is
-                            some of my recent work:
-                        </Description>
-                    </Margin>
+                    <TabletPortraitUp>
+                        <Margin left="5rem">
+                            <Description>
+                                A lot of my free-time is spent on&nbsp;software
+                                projects and&nbsp;learning new skills. Here is
+                                some of my recent work:
+                            </Description>
+                        </Margin>
+                    </TabletPortraitUp>
+                    <PhoneOnly>
+                        <Margin left="2rem">
+                            <Description>
+                                A lot of my free-time is spent on&nbsp;software
+                                projects and learning new skills. Here is
+                                some of my recent work:
+                            </Description>
+                        </Margin>
+                    </PhoneOnly>
 
-                    <Margin top="10rem" bottom="30rem">
-                        <Grid columnDefs="1fr 1fr" verticalSpacing="25rem" horizontalSpacing="20%" alignItems="flex-end">
-                            <Margin left="20%">
+                    <TabletPortraitUp>
+                        <Margin top="10rem" bottom="30rem">
+                            <Grid areas={["x1 p1 p1 p1 p1 p1 i1 i1 i1 i1", "i2 i2 i2 i2 p2 p2 p2 p2 p2 x2"]} verticalSpacing="15rem" alignItems="flex-end">
+                                <Box gridArea="p1">
+                                    <Margin left="10%" right="20%">
+                                        <Reveal direction="right">
+                                            <Project
+                                                title="Open Hacker News"
+                                                description="Our goal for the Open HN project is to create beautiful and open-source Hacker News readers for all platforms"
+                                                type="iOS App"
+                                                status="Active Development"
+                                                releaseDate="2019"
+                                            />
+                                        </Reveal>
+                                    </Margin>
+                                </Box>
+                                <Box gridArea="i1">
+                                    <Margin bottom="50%">
+                                        <Reveal direction="right">
+                                            <ProjectImage src="/project-1-1.svg" rotation={-12} description="Open Hacker News" />
+                                        </Reveal>
+                                    </Margin>
+                                </Box>
+
+                                <Box gridArea="i2">
+                                    <Margin bottom="50%">
+                                        <Reveal direction="left">
+                                            <ProjectImage src="/project-2.svg" rotation={8} description="Polar File Sharing" />
+                                        </Reveal>
+                                    </Margin>
+                                </Box>
+                                <Box gridArea="p2">
+                                    <Margin left="30%">
+                                        <Reveal direction="left">
+                                            <Project
+                                                title="Polar Sharing"
+                                                description="Encrypted file sharing for the open web. Lightweight, self-hostable, open-source and packed with features."
+                                                type="Web App"
+                                                status="Draft & Prototype"
+                                                releaseDate="∞"
+                                            />
+                                        </Reveal>
+                                    </Margin>
+                                </Box>
+                            </Grid>
+                        </Margin>
+                    </TabletPortraitUp>
+                    <PhoneOnly>
+                        <Margin top="8rem" bottom="15rem">
+                            <Margin bottom="3rem">
                                 <Reveal direction="right">
-                                    <Project
-                                        title="Open Hacker News"
-                                        description="Our goal for the Open HN project is to create beautiful and open-source Hacker News readers for all platforms"
-                                        type="iOS App"
-                                        status="Active Development"
-                                        releaseDate="2019"
-                                    />
+                                    <ProjectImage src="/project-1-1.svg" rotation={-12} description="Open Hacker News" />
                                 </Reveal>
                             </Margin>
-                            <Margin bottom="10rem" right="20%">
-                                <img style={{ display: "block", width: "100%", transform: "rotate(-12deg)" }} src="/project-1.svg" />
-                            </Margin>
+                            <Reveal direction="right">
+                                <Project
+                                    title="Open Hacker News"
+                                    description="Our goal for the Open HN project is to create beautiful and open-source Hacker News readers for all platforms"
+                                    type="iOS App"
+                                    status="Active Development"
+                                    releaseDate="2019"
+                                />
+                            </Reveal>
 
-                            <Margin right="30%" bottom="20rem">
-                                <img style={{ display: "block", width: "100%", transformOrigin: "0 50%", transform: "rotate(8deg) scale(1.8)" }} src="/project-2.svg" />
+                            <Margin top="10rem" bottom="3rem">
+                                <Reveal direction="left">
+                                    <ProjectImage src="/project-2.svg" rotation={8} description="Polar File Sharing" />
+                                </Reveal>
                             </Margin>
                             <Reveal direction="left">
                                 <Project
@@ -160,37 +226,72 @@ class App extends Component {
                                     releaseDate="∞"
                                 />
                             </Reveal>
-                        </Grid>
-                    </Margin>
+                        </Margin>
+                    </PhoneOnly>
                 </Section>
 
-                {/* Social Section */}
+                {/* Skill Section */}
                 <Section backgroundImage="/background-3-1.svg" backgroundSize="30%">
                     <Title>Skills enabled.</Title>
-                    <Margin left="15rem">
-                        <Description>
-                            I became interested in technology at the age&nbsp;of&nbsp;5,
-                            and I’ve come to learn a lot since. Here's all the stuff I do:
-                        </Description>
-                    </Margin>
 
-                    <Margin top="35vw" topPhone="20vw" bottom="20vw" horizontalPhone="5%">
-                        <Grid columns={2} verticalSpacing="6rem" horizontalSpacing="8rem">
-                            {[
-                                { title: "JavaScript",  percent: 95,    level: "majestic"       },
-                                { title: "HTML & CSS",  percent: 90,    level: "really good"    },
-                                { title: "Python",      percent: 45,    level: "mediocre"       },
-                                { title: "PHP",         percent: 70,    level: "pretty nice"    },
-                                { title: ".NET",        percent: 55,    level: "decent"         },
-                                { title: "Rust",        percent: 15,    level: "just starting"  },
-                                { title: "Swift",       percent: 40,    level: "quite ok"       },
-                            ].map ((itm, idx) => (
-                                <Reveal delay={idx % 2 * .1}>
-                                    <Skill percent={itm.percent} title={itm.title} level={itm.level} />
-                                </Reveal>
-                            ))}
-                        </Grid>
-                    </Margin>
+                    <TabletPortraitUp>
+                        <Margin left="5rem">
+                            <Description>
+                                I became interested in technology at the age of five,
+                                and I’ve come to learn a lot since. Here's some of the stuff I've learned:
+                            </Description>
+                        </Margin>
+                        <Margin top="40vw" bottom="20vw">
+                            <Grid columns={2} verticalSpacing="6rem" horizontalSpacing="8rem">
+                                {[
+                                    { title: "JavaScript",  percent: 95,    level: "majestic"       },
+                                    { title: "HTML & CSS",  percent: 90,    level: "really good"    },
+                                    { title: "PHP",         percent: 70,    level: "pretty nice"    },
+                                    { title: ".NET",        percent: 55,    level: "decent"         },
+                                    { title: "Swift",       percent: 30,    level: "quite ok"       },
+                                    { title: "Python",      percent: 40,    level: "average"        },
+                                ].map ((itm, idx) => (
+                                    <Reveal key={idx} delay={idx % 2 * .1}>
+                                        <Skill percent={itm.percent} title={itm.title} level={itm.level} />
+                                    </Reveal>
+                                ))}
+                            </Grid>
+                            <Margin top="5rem">
+                                <Note>
+                                    ...and more! Let's talk if you're interested in what else I can do.
+                                </Note>
+                            </Margin>
+                        </Margin>
+                    </TabletPortraitUp>
+                    <PhoneOnly>
+                        <Margin left="2rem">
+                            <Description>
+                                I became interested in technology at the age of five!
+                                Here's some stuff I've learned:
+                            </Description>
+                        </Margin>
+                        <Margin top="45vw" bottom="10rem">
+                            <Grid columns={1} verticalSpacing="4rem" horizontalSpacing="6rem">
+                                {[
+                                    { title: "JavaScript",  percent: 95,    level: "majestic"       },
+                                    { title: "HTML & CSS",  percent: 90,    level: "really good"    },
+                                    { title: "PHP",         percent: 70,    level: "pretty nice"    },
+                                    { title: ".NET",        percent: 55,    level: "decent"         },
+                                    { title: "Python",      percent: 40,    level: "average"        },
+                                    { title: "Swift",       percent: 30,    level: "quite ok"       },
+                                ].map ((itm, idx) => (
+                                    <Reveal key={idx} delay={.1}>
+                                        <Skill percent={itm.percent} title={itm.title} level={itm.level} />
+                                    </Reveal>
+                                ))}
+                            </Grid>
+                            <Margin top="5rem">
+                                <Note>
+                                    ...and more! Let's talk if you're interested in what else I can do.
+                                </Note>
+                            </Margin>
+                        </Margin>
+                    </PhoneOnly>
                 </Section>
 
                 {/* Contact Section */}
@@ -216,7 +317,7 @@ class App extends Component {
                                         { name: "nikxda", method: "GitHub", icon: "/icon-github.svg", link: "https://github.com/nikxda" },
                                         { name: "hello@nikx.io", method: "E-Mail", icon: "/icon-email.svg", link: "mailto:hello@nikx.io" },
                                     ].map ((itm, idx) => (
-                                        <Reveal direction="right">
+                                        <Reveal key={idx} direction="right">
                                             <Margin top={idx > 0 ? "2rem" : "0"}>
                                                 <Contact name={itm.name} method={itm.method} icon={itm.icon} link={itm.link} />
                                             </Margin>
@@ -244,7 +345,7 @@ class App extends Component {
                                     { name: "nikxda", method: "GitHub", icon: "/icon-github.svg", link: "https://github.com/nikxda" },
                                     { name: "hello@nikx.io", method: "E-Mail", icon: "/icon-email.svg", link: "mailto:hello@nikx.io" },
                                 ].map ((itm, idx) => (
-                                    <Reveal direction="right">
+                                    <Reveal key={idx} delay={idx * 0.1} direction="right">
                                         <Margin top={idx > 0 ? "2rem" : "0"}>
                                             <Contact name={itm.name} method={itm.method} icon={itm.icon} link={itm.link} />
                                         </Margin>

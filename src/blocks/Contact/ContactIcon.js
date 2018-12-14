@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { brightGray } from "../../utils/themeColors";
 
 export default styled.div`
     background-image: url("${props => props.src}");

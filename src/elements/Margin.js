@@ -5,7 +5,7 @@ export default styled.div`
     ${props => 
         ["top", "right", "bottom", "left"].map ((itm, idx) => 
             `margin-${itm}: ${[itm, idx % 2 === 0 ? "vertical" : "horizontal", "all"]
-                .map (side => props [side])
+                .map (side => props[side])
                 .find (itm => itm != null) || 0};`
         ).reduce ((a, b) => `${a}\n${b}`, "")
     }

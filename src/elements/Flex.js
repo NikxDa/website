@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { isDesktop } from "../utils/mediaQueries";
 
 export default styled.div`
     display: flex;

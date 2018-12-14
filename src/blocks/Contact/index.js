@@ -16,7 +16,7 @@ const Contact = ({
     linkText,
     className
 }) => (
-    <a className={className} target="_blank" href={link} alt={linkText}>
+    <a className={className} target="_blank" rel="noopener noreferrer" href={link} alt={linkText}>
         <Flex justifyContent="flex-start" alignItems="center">
             <ContactIcon src={icon} />
             <div style={{ flex: 1 }}>

@@ -1,11 +1,6 @@
-import React, { Component } from "react";
 import styled from "styled-components";
 
 import media from "../utils/mediaQueries";
-
-const Section = React.forwardRef ((props, ref) => (
-    <div className={props.className} ref={ref}>{props.children}</div>
-));
 
 export default styled.div`
     display: flex;
@@ -41,10 +36,10 @@ export default styled.div`
     `}
 
     ${props => media.phone`
-        padding: 3rem 10%;
+        padding: 3rem 15%;
 
         &::after {
-            background-size: ${parseInt (props.backgroundSize || 100) * 1.5}%;
+            background-size: ${parseInt (props.backgroundSize || 100) * 1.7}%;
             background-position-x: ${props.backgroundSize ? "initial" : "50%"};
         }
     `}

@@ -8,7 +8,7 @@ export default styled(({ children, className }) => {
 })`
     transform: ${props =>
         ["translateX", "translateY", "translateZ", "translate", "rotate", "scale"]
-            .map (itm => props [itm] ? `${itm}(${props[itm]})` : null)
+            .map (itm => props[itm] ? `${itm}(${props[itm]})` : null)
             .filter (itm => itm !== null)
             .join (" ")
     };
