@@ -1,22 +1,17 @@
 import { css } from "styled-components";
+import breakpointRanges from "./breakpointRanges";
 
-const mediaSizes = {
-    phoneScreen: 600,
-    tabletScreen: 900,
-    desktopScreen: 1200
-}
-
-const mediaQueries = Object.keys (mediaSizes).reduce ((acc, label) => {
+const mediaQueries = Object.keys (breakpointRanges).reduce ((acc, label) => {
+    let [, max] = breakpointRanges [label];
     return {
         [label]: (...args) => css`
-            @media only screen and (max-width: ${mediaSizes [label]}px) {
-                ${css (...args)}
+            @media only screen 
+                ${(max && max !== Infinity) && ` and (max-width: ${max}px)`} {
+                    ${css (...args)}
             }
         `,
         ...acc
     };
 }, {});
 
-export const isPhone = mediaQueries.phoneScreen;
-export const isTablet = mediaQueries.tabletScreen;
-export const isDesktop = mediaQueries.desktopScreen;
+export default mediaQueries;
