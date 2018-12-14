@@ -313,7 +313,7 @@ class App extends Component {
                                 </div>
                                 <Margin top="10vw" right="5vw">
                                     {[
-                                        { name: "nikxda", method: "Stack Overflow", icon: "/icon-stackoverflow.svg", link: "https://stackoverflow.com/users/nikxda" },
+                                        { name: "nikxda", method: "Stack Overflow", icon: "/icon-stackoverflow.svg", link: "https://stackoverflow.com/users/4459695/nikxda" },
                                         { name: "nikxda", method: "GitHub", icon: "/icon-github.svg", link: "https://github.com/nikxda" },
                                         { name: "hello@nikx.io", method: "E-Mail", icon: "/icon-email.svg", link: "mailto:hello@nikx.io" },
                                     ].map ((itm, idx) => (
@@ -341,7 +341,7 @@ class App extends Component {
                             </div>
                             <Margin horizontal="auto" top="20vw">
                                 {[
-                                    { name: "nikxda", method: "Stack Overflow", icon: "/icon-stackoverflow.svg", link: "https://stackoverflow.com/users/nikxda" },
+                                    { name: "nikxda", method: "Stack Overflow", icon: "/icon-stackoverflow.svg", link: "https://stackoverflow.com/users/4459695/nikxda" },
                                     { name: "nikxda", method: "GitHub", icon: "/icon-github.svg", link: "https://github.com/nikxda" },
                                     { name: "hello@nikx.io", method: "E-Mail", icon: "/icon-email.svg", link: "mailto:hello@nikx.io" },
                                 ].map ((itm, idx) => (
