@@ -7,8 +7,4 @@ export default styled.div`
     flex-direction: ${props => props.direction || "row"};
     justify-content: ${props => props.justifyContent || "space-between"};
     align-items: ${props => props.alignItems || "initial"};
-
-    ${isDesktop`
-        background-color: red;
-    `}
 `;

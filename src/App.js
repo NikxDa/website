@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { darkOrange } from "./utils/themeColors";
+import { TabletPortraitDown, TabletLandscapeUp } from "./elements/Breakpoint";
 
 // Import font loader
 import FontFaceObserver from "./utils/fontFaceObserver.js";
@@ -18,7 +19,6 @@ import Contact from './blocks/Contact';
 import Grid from "./elements/Grid";
 import Flex from "./elements/Flex";
 import Reveal from "./elements/Reveal";
-import Media, { breakpoints } from "./elements/Media";
 
 class App extends Component {
     constructor (props) {
@@ -131,27 +131,27 @@ class App extends Component {
                         </Description>
                     </Margin>
 
-                    <Margin top="20rem" left="10rem">
-                        <Flex alignItems="flex-end">
-                            <Reveal style={{ width: "40%" }} direction="right">
-                                <Project
-                                    title="Open Hacker News"
-                                    description="Our goal for the Open HN project is to create beautiful and open-source Hacker News readers for all platforms"
-                                    type="iOS App"
-                                    status="Active Development"
-                                    releaseDate="2019"
-                                />
-                            </Reveal>
-                            <img style={{ display: "block", width: "30%", transform: "translateY(-10rem) rotate(-12deg)" }} src="/project-1.svg" />
-                        </Flex>
-                    </Margin>
+                    <Margin top="10rem" bottom="30rem">
+                        <Grid columnDefs="1fr 1fr" verticalSpacing="25rem" horizontalSpacing="20%" alignItems="flex-end">
+                            <Margin left="20%">
+                                <Reveal direction="right">
+                                    <Project
+                                        title="Open Hacker News"
+                                        description="Our goal for the Open HN project is to create beautiful and open-source Hacker News readers for all platforms"
+                                        type="iOS App"
+                                        status="Active Development"
+                                        releaseDate="2019"
+                                    />
+                                </Reveal>
+                            </Margin>
+                            <Margin bottom="10rem" right="20%">
+                                <img style={{ display: "block", width: "100%", transform: "rotate(-12deg)" }} src="/project-1.svg" />
+                            </Margin>
 
-                    <Margin top="25rem" bottom="30rem">
-                        <Flex alignItems="flex-end">
-                            <Media breakpoint={breakpoints.phone}>
-                                <img style={{ display: "block", width: "50%", transform: "translateY(-10rem) rotate(8deg)" }} src="/project-2.svg" />
-                            </Media>
-                            <Reveal direction="left" style={{ width: "40%" }}>
+                            <Margin right="30%" bottom="20rem">
+                                <img style={{ display: "block", width: "100%", transformOrigin: "0 50%", transform: "rotate(8deg) scale(1.8)" }} src="/project-2.svg" />
+                            </Margin>
+                            <Reveal direction="left">
                                 <Project
                                     title="Polar Sharing"
                                     description="Encrypted file sharing for the open web. Lightweight, self-hostable, open-source and packed with features."
@@ -160,14 +160,14 @@ class App extends Component {
                                     releaseDate="∞"
                                 />
                             </Reveal>
-                        </Flex>
+                        </Grid>
                     </Margin>
                 </Section>
 
                 {/* Social Section */}
                 <Section backgroundImage="/background-3-1.svg" backgroundSize="30%">
                     <Title>Skills enabled.</Title>
-                    <Margin left="15rem" leftPhone="2rem" topPhone="2rem">
+                    <Margin left="15rem">
                         <Description>
                             I became interested in technology at the age&nbsp;of&nbsp;5,
                             and I’ve come to learn a lot since. Here's all the stuff I do:
@@ -176,69 +176,83 @@ class App extends Component {
 
                     <Margin top="35vw" topPhone="20vw" bottom="20vw" horizontalPhone="5%">
                         <Grid columns={2} verticalSpacing="6rem" horizontalSpacing="8rem">
-                            <Reveal>
-                                <Skill percent={95} title="JavaScript" level="majestic" />
-                            </Reveal>
-                            <Reveal delay={.1}>
-                                <Skill percent={90} title="HTML & CSS" level="really good" />
-                            </Reveal>
-
-                            <Reveal>
-                                <Skill percent={45} title="Python" level="mediocre" />
-                            </Reveal>
-                            <Reveal delay={.1}>
-                                <Skill percent={70} title="PHP" level="pretty nice" />
-                            </Reveal>
-
-                            <Reveal>
-                                <Skill percent={55} title=".NET" level="decent" />
-                            </Reveal>
-                            <Reveal delay={.1}>
-                                <Skill percent={15} title="Rust" level="just starting" />
-                            </Reveal>
-
-                            <Reveal>
-                                <Skill percent={40} title="Swift" level="quite ok" />
-                            </Reveal>
+                            {[
+                                { title: "JavaScript",  percent: 95,    level: "majestic"       },
+                                { title: "HTML & CSS",  percent: 90,    level: "really good"    },
+                                { title: "Python",      percent: 45,    level: "mediocre"       },
+                                { title: "PHP",         percent: 70,    level: "pretty nice"    },
+                                { title: ".NET",        percent: 55,    level: "decent"         },
+                                { title: "Rust",        percent: 15,    level: "just starting"  },
+                                { title: "Swift",       percent: 40,    level: "quite ok"       },
+                            ].map ((itm, idx) => (
+                                <Reveal delay={idx % 2 * .1}>
+                                    <Skill percent={itm.percent} title={itm.title} level={itm.level} />
+                                </Reveal>
+                            ))}
                         </Grid>
                     </Margin>
                 </Section>
 
                 {/* Contact Section */}
                 <Section backgroundImage="/background-4.svg">
-                    <Margin bottom="15vw">
-                        <Flex>
+                    <TabletLandscapeUp>
+                        <Margin bottom="15vw">
+                            <Flex>
+                                <div>
+                                    <Margin left="5vw">
+                                        <Title>Get in touch!</Title>
+                                    </Margin>
+                                    <Margin right="10vw">
+                                        <Description>
+                                            Want to work together or have
+                                            an interesting project? Just drop me a message
+                                            and I'll be in touch.
+                                        </Description>
+                                    </Margin>
+                                </div>
+                                <Margin top="10vw" right="5vw">
+                                    {[
+                                        { name: "nikxda", method: "Stack Overflow", icon: "/icon-stackoverflow.svg", link: "https://stackoverflow.com/users/nikxda" },
+                                        { name: "nikxda", method: "GitHub", icon: "/icon-github.svg", link: "https://github.com/nikxda" },
+                                        { name: "hello@nikx.io", method: "E-Mail", icon: "/icon-email.svg", link: "mailto:hello@nikx.io" },
+                                    ].map ((itm, idx) => (
+                                        <Reveal direction="right">
+                                            <Margin top={idx > 0 ? "2rem" : "0"}>
+                                                <Contact name={itm.name} method={itm.method} icon={itm.icon} link={itm.link} />
+                                            </Margin>
+                                        </Reveal>
+                                    ))}
+                                </Margin>
+                            </Flex>
+                        </Margin>
+                    </TabletLandscapeUp>
+                    <TabletPortraitDown>
+                        <Margin bottom="15vw">
                             <div>
                                 <Margin left="5vw">
                                     <Title>Get in touch!</Title>
                                 </Margin>
-                                <Margin right="10vw">
-                                    <Description>
-                                        I mean it! If you have an interesting project, are
-                                        curious what else I am up to or just want to say hi,
-                                        then go ahead and send me a message.
-                                    </Description>
-                                </Margin>
+                                <Description>
+                                    Want to work together or have
+                                    an interesting project? Just drop me a message
+                                    and I'll be in touch.
+                                </Description>
                             </div>
-                            <Margin top="10vw" right="5vw">
-                                <Reveal direction="right">
-                                    <Contact name="nikxda" method="Stack Overflow" icon="/icon-stackoverflow.svg" link="https://stackoverflow.com/users/nikxda" />
-                                </Reveal>
-                                
-                                <Reveal direction="right">
-                                    <Margin top="2rem">
-                                        <Contact name="nikxda" method="GitHub" icon="/icon-github.svg" link="https://github.com/nikxda" />
-                                    </Margin>
-                                </Reveal>
-
-                                <Reveal direction="right">
-                                    <Margin top="2rem">
-                                        <Contact name="hello@nikx.io" method="E-Mail" icon="/icon-email.svg" link="mailto:hello@nikx.io" />
-                                    </Margin>
-                                </Reveal>
+                            <Margin horizontal="auto" top="20vw">
+                                {[
+                                    { name: "nikxda", method: "Stack Overflow", icon: "/icon-stackoverflow.svg", link: "https://stackoverflow.com/users/nikxda" },
+                                    { name: "nikxda", method: "GitHub", icon: "/icon-github.svg", link: "https://github.com/nikxda" },
+                                    { name: "hello@nikx.io", method: "E-Mail", icon: "/icon-email.svg", link: "mailto:hello@nikx.io" },
+                                ].map ((itm, idx) => (
+                                    <Reveal direction="right">
+                                        <Margin top={idx > 0 ? "2rem" : "0"}>
+                                            <Contact name={itm.name} method={itm.method} icon={itm.icon} link={itm.link} />
+                                        </Margin>
+                                    </Reveal>
+                                ))}
                             </Margin>
-                        </Flex>
-                    </Margin>
+                        </Margin>
+                    </TabletPortraitDown>
                 </Section>
             </div>
         );

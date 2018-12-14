@@ -29,6 +29,7 @@ class Reveal extends React.Component {
 
     componentDidMount () {
         window.addEventListener ("scroll", this.handleScroll);
+        this.handleScroll ();
     }
 
     componentWillUnmount () {

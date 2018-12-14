@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import media from "../utils/mediaQueries";
+
 const Section = React.forwardRef ((props, ref) => (
     <div className={props.className} ref={ref}>{props.children}</div>
 ));
@@ -31,6 +33,19 @@ export default styled.div`
             background-position-y: 50%;
             background-size: ${props.backgroundSize || "contain"};
             transform: translateY(50%);
+        }
+    `}
+
+    ${media.smallDesktop`
+        padding: 3rem 15%;
+    `}
+
+    ${props => media.phone`
+        padding: 3rem 10%;
+
+        &::after {
+            background-size: ${parseInt (props.backgroundSize || 100) * 1.5}%;
+            background-position-x: ${props.backgroundSize ? "initial" : "50%"};
         }
     `}
 `;
