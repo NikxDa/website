@@ -9,6 +9,11 @@ export default styled.img.attrs ({
     width: 100%;
     transform: rotate(${props => props.rotation || 0}deg);
 
+    ${media.tabletPortrait`
+        width: 50%;
+        margin: 5rem auto;
+    `}
+
     ${media.phone`
         width: 80%;
         margin: 2rem auto;

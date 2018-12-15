@@ -5,8 +5,6 @@ import { TabletPortraitUp, PhoneOnly, TabletPortraitDown, TabletLandscapeUp } fr
 // Import font loader
 import FontFaceObserver from "./utils/fontFaceObserver.js";
 
-import breakpointProps from "./utils/breakpointProps";
-
 // Components
 import Skill from "./blocks/Skill";
 import Title from "./elements/Title"
@@ -148,7 +146,7 @@ class App extends Component {
                         </Margin>
                     </PhoneOnly>
 
-                    <TabletPortraitUp>
+                    <TabletLandscapeUp>
                         <Margin top="10rem" bottom="30rem">
                             <Grid areas={["x1 p1 p1 p1 p1 p1 i1 i1 i1 i1", "i2 i2 i2 i2 p2 p2 p2 p2 p2 x2"]} verticalSpacing="15rem" alignItems="flex-end">
                                 <Box gridArea="p1">
@@ -194,9 +192,9 @@ class App extends Component {
                                 </Box>
                             </Grid>
                         </Margin>
-                    </TabletPortraitUp>
-                    <PhoneOnly>
-                        <Margin top="8rem" bottom="15rem">
+                    </TabletLandscapeUp>
+                    <TabletPortraitDown>
+                        <Margin top="20vw" bottom="45vw">
                             <Margin bottom="3rem">
                                 <Reveal direction="right">
                                     <ProjectImage src="/project-1-1.svg" rotation={-12} description="Open Hacker News" />
@@ -227,7 +225,7 @@ class App extends Component {
                                 />
                             </Reveal>
                         </Margin>
-                    </PhoneOnly>
+                    </TabletPortraitDown>
                 </Section>
 
                 {/* Skill Section */}
