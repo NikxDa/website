@@ -5,6 +5,8 @@ const RevealContent = styled.div`
     transition: 1s opacity, 1s transform;
     transition-delay: ${props => props.delay || 0}s;
     opacity: ${props => props.isRevealed ? 1 : 0};
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
 
     ${props => ["top", "right", "bottom", "left"].includes (props.direction) && `
         transform: translate${
