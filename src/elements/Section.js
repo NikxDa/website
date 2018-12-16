@@ -28,6 +28,13 @@ export default styled.div`
             background-position-y: 50%;
             background-size: ${props.backgroundSize || "contain"};
             transform: translateY(50%);
+
+            /* Fix for Safari flickering */
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
         }
     `}
 
