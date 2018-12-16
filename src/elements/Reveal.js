@@ -38,7 +38,7 @@ class Reveal extends React.Component {
 
     handleScroll () {
         const domNode = this.state.domRef.current;
-        if (domNode && !this.state.isRevealed) {
+        if (domNode && !this.state.isRevealed && domNode.offsetWidth > 0 && domNode.offsetHeight > 0) {
             const bounds = domNode.getBoundingClientRect ();
             const minScrolledAmount = 50;
 
