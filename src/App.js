@@ -87,7 +87,7 @@ class App extends Component {
         const spinnerEl = document.querySelector (".loading-spinner");
 
         // If found, remove
-        if (spinnerEl) {
+        if (spinnerEl && (spinnerEl.style.opacity !== "0")) {
             // Clear content immediately
             spinnerEl.innerHTML = "";
 
@@ -97,7 +97,7 @@ class App extends Component {
             });
             
             // Start the transition
-            spinnerEl.style.opacity = 0;
+            spinnerEl.style.opacity = "0";
         }
     }
 
@@ -154,7 +154,7 @@ class App extends Component {
                                         <Reveal direction="right">
                                             <Project
                                                 title="Open Hacker News"
-                                                description="Our goal for the Open HN project is to create beautiful and open-source Hacker News readers for all platforms"
+                                                description="Our goal for the Open HN project is to create beautiful and open-source Hacker News readers for all platforms."
                                                 type="iOS App"
                                                 status="Active Development"
                                                 releaseDate="2019"
