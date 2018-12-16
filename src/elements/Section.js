@@ -20,18 +20,13 @@ export default styled.div`
             right: 0;
             bottom: 0;
             height: 500vh;
-            float: left;
             width: 100%;
             z-index: -1000;
             background-image: url("${props.backgroundImage}");
             background-repeat: no-repeat;
-            background-position-y: 50%;
+            background-position: 0 50%;
             background-size: ${props.backgroundSize || "contain"};
             transform: translate3d(0, 50%, 0);
-
-            /* Fix for Safari flickering */
-            backface-visibility: hidden;
-            transform-style: preserve-3d;
         }
     `}
 
@@ -44,7 +39,7 @@ export default styled.div`
 
         &::after {
             background-size: ${parseInt (props.backgroundSize || 100) * 1.7}%;
-            background-position-x: ${props.backgroundSize ? "initial" : "50%"};
+            background-position: ${props.backgroundSize ? "initial" : "50% 50%"};
         }
     `}
 `;

@@ -5,13 +5,14 @@ const RevealContent = styled.div`
     transition: 1s opacity, 1s transform;
     transition-delay: ${props => props.delay || 0}s;
     opacity: ${props => props.isRevealed ? 1 : 0};
+    will-change: true;
 
     ${props => ["top", "right", "bottom", "left"].includes (props.direction) && `
-        transform: translate${
-            ["top", "bottom"].includes (props.direction) ? "Y" : "X"
-        }(${props.isRevealed 
-            ? 0 
-            : (["right", "bottom"].includes (props.direction) ? -1 : 1) * 3}rem); 
+        transform: translate3d(
+            ${props.isRevealed ? 0 : (props.direction === "right" ? -1 : (props.direction === "left" ? 1 : 0)) * 3}rem,
+            ${props.isRevealed ? 0 : (props.direction === "bottom" ? -1 : (props.direction === "top" ? 1 : 0)) * 3}rem,
+            0
+        );
     `};
 `;
 
@@ -38,7 +39,11 @@ class Reveal extends React.Component {
 
     handleScroll () {
         const domNode = this.state.domRef.current;
-        if (domNode && !this.state.isRevealed && domNode.offsetWidth > 0 && domNode.offsetHeight > 0) {
+        if (
+            domNode
+            && !this.state.isRevealed
+            && (domNode.offsetWidth > 0 && domNode.offsetHeight > 0)
+        ) {
             const bounds = domNode.getBoundingClientRect ();
             const minScrolledAmount = 50;
 
@@ -53,6 +58,8 @@ class Reveal extends React.Component {
     }
 
     render () {
+        return this.props.children;
+        
         return (
             <RevealContent ref={this.state.domRef} isRevealed={this.state.isRevealed} {...this.props}>
                 {this.props.children}
