@@ -7,4 +7,11 @@
     box-sizing: border-box;
     line-height: 1.5;
     font-family: "Source Sans Pro", sans-serif;
+
+    /* Fix for Safari flickering */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
 }
