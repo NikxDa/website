@@ -43,6 +43,7 @@ class Reveal extends React.Component {
             const minScrolledAmount = 50;
 
             if (
+                (bounds.width > 0 && bounds.height > 0) &&
                 (bounds.top - window.innerHeight) <= -minScrolledAmount
             ) {
                 this.setState ({ isRevealed: true });
