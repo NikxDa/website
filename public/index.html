@@ -24,11 +24,11 @@
     <!-- Spinner CSS -->
     <style>
       @keyframes loading-spinner {
-        0% { transform: perspective(120px) rotateX(0deg) rotateY(0deg); }
-        25% { transform: perspective(120px) rotateX(180deg); }
-        50% { transform: perspective(120px) rotateX(180deg) rotateY(180deg); }
-        75% { transform: perspective(120px) rotateX(360deg) rotateY(180deg); }
-        100% { transform: perspective(120px) rotateX(360deg) rotateY(360deg); }
+        0% { transform: perspective(3000px) translateZ(10vw) rotateX(0deg) rotateY(0deg); }
+        25% { transform: perspective(3000px) translateZ(10vw) rotateX(180deg); }
+        50% { transform: perspective(3000px) translateZ(10vw) rotateX(180deg) rotateY(180deg); }
+        75% { transform: perspective(3000px) translateZ(10vw) rotateX(360deg) rotateY(180deg); }
+        100% { transform: perspective(3000px) translateZ(10vw) rotateX(360deg) rotateY(360deg); }
       }
 
       .loading-spinner {
@@ -46,11 +46,6 @@
       }
       
       .loading-spinner svg {
-        font-weight: 900;
-        color: #E0E5F0;
-        font-size: 3rem;
-        font-family: "Arial Black", sans-serif;
-
         animation: loading-spinner 4s linear infinite;
         transform-origin: 50% 50%;
         width: 5vw;
