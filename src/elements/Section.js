@@ -39,6 +39,7 @@ export default styled.div`
 
         &::after {
             background-size: ${parseInt (props.backgroundSize || 100) * 1.7}%;
+            background-position: ${props.backgroundSize ? "0 50%" : "50%"};
         }
     `}
 `;
