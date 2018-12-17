@@ -35,7 +35,7 @@ export default styled.div`
     `}
 
     ${props => media.phone`
-        padding: 3rem 15%;
+        padding: ${props.fullHeight ? "3rem 0 3rem 15%" : "3rem 15"};
 
         &::after {
             background-size: ${parseInt (props.backgroundSize || 100) * 1.7}%;
